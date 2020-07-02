@@ -32,14 +32,20 @@ const useStyles = makeStyles((theme: Theme) =>
     grow: {
       flexGrow: 1
     },
-    menuButton: {
-      marginRight: theme.spacing(2)
-    },
     appBar: {
-      backgroundColor: '#fff',
+      // backgroundColor: '#fff',
+      backgroundColor: theme.palette.primary.main,
       zIndex: theme.zIndex.drawer + 101
     },
+    menuButton: {
+      color: '#fff'
+    },
     toolbar: theme.mixins.toolbar,
+    logoText: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontSize: '20px',
+      color: '#fff'
+    },
     title: {
       display: 'none',
       [theme.breakpoints.up('sm')]: {
@@ -194,7 +200,12 @@ const Navbar = () => {
       <AppBar position="sticky" className={classes.appBar}>
         <Toolbar>
           <img src={logo} alt="logo" width="48" height="48" />
-          <Typography variant="body1" color="textPrimary" noWrap>
+          <Typography
+            className={classes.logoText}
+            variant="body1"
+            color="textPrimary"
+            noWrap
+          >
             Antony Tech
           </Typography>
           <div className={classes.grow} />
@@ -222,6 +233,7 @@ const Navbar = () => {
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
+              className={classes.menuButton}
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"

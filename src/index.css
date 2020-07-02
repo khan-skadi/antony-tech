@@ -1,4 +1,6 @@
-body {
-  margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Montserrat&display=swap');
+
+/* body {
+  font-family: 'Barlow', sans-serif;
   font-family: 'Montserrat', sans-serif;
-}
+} */
