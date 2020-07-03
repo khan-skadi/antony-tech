@@ -10,19 +10,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Drawer from '@material-ui/core/Drawer';
 
 import logo from '../assets/logo/at-logo.png';
@@ -33,23 +26,46 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1
     },
     appBar: {
-      // backgroundColor: '#fff',
       backgroundColor: theme.palette.primary.main,
       zIndex: theme.zIndex.drawer + 101
+    },
+    navToolbar: {
+      height: '100%'
     },
     menuButton: {
       color: '#fff'
     },
+
     toolbar: theme.mixins.toolbar,
     logoText: {
-      fontFamily: '"Montserrat", sans-serif',
+      fontFamily: '"Barlow", sans-serif',
       fontSize: '20px',
-      color: '#fff'
+      color: '#fff',
+      marginLeft: theme.spacing(1)
     },
     title: {
       display: 'none',
       [theme.breakpoints.up('sm')]: {
         display: 'block'
+      }
+    },
+    navList: {
+      backgroundColor: 'rgba(101, 115, 195, .9)',
+      '& > li > div > span': {
+        fontFamily: '"Montserrat", sans-serif',
+        fontSize: '16px',
+        lineHeight: '30px',
+        background: 'transparent',
+        textAlign: 'left',
+        color: '#fff'
+      }
+    },
+    navListDesktop: {
+      display: 'flex',
+      flexDirection: 'row',
+      whiteSpace: 'nowrap',
+      '& li:hover': {
+        backgroundColor: 'rgba(101, 115, 195, .9)'
       }
     },
     list: {
@@ -61,51 +77,15 @@ const useStyles = makeStyles((theme: Theme) =>
     drawer: {
       color: '#e0e0e0'
     },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25)
-      },
-      marginRight: theme.spacing(2),
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto'
-      }
-    },
-    searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    inputRoot: {
-      color: 'inherit'
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch'
-      }
-    },
     sectionDesktop: {
       display: 'none',
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up('sm')]: {
         display: 'flex'
       }
     },
     sectionMobile: {
       display: 'flex',
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up('sm')]: {
         display: 'none'
       }
     }
@@ -113,6 +93,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
+
+interface ObjectLiteral {
+  [key: string]: any;
+}
 
 const Navbar = () => {
   const classes = useStyles();
@@ -124,10 +108,6 @@ const Navbar = () => {
   };
 
   const isMenuOpen = Boolean(anchorEl);
-
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -142,26 +122,22 @@ const Navbar = () => {
       onClick={toggleMenu}
       onKeyDown={toggleMenu}
     >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+      <List className={classes.navList}>
+        <ListItem button component="li">
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button component="li">
+          <ListItemText primary="About Us" />
+        </ListItem>
+        <ListItem button component="li">
+          <ListItemText primary="Services" />
+        </ListItem>
+        <ListItem button component="li">
+          <ListItemText primary="Book Now" />
+        </ListItem>
+        <ListItem button component="li">
+          <ListItemText primary="Gallery" />
+        </ListItem>
       </List>
     </div>
   );
@@ -198,7 +174,7 @@ const Navbar = () => {
   return (
     <div className={classes.grow}>
       <AppBar position="sticky" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.navToolbar}>
           <img src={logo} alt="logo" width="48" height="48" />
           <Typography
             className={classes.logoText}
@@ -210,26 +186,23 @@ const Navbar = () => {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="primary">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="primary">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="primary"
-            >
-              <AccountCircle />
-            </IconButton>
+            <List className={classes.navListDesktop}>
+              <ListItem button component="li">
+                <ListItemText primary="Home" />
+              </ListItem>
+              <ListItem button component="li">
+                <ListItemText primary="About Us" />
+              </ListItem>
+              <ListItem button component="li">
+                <ListItemText primary="Services" />
+              </ListItem>
+              <ListItem button component="li">
+                <ListItemText primary="Book Now" />
+              </ListItem>
+              <ListItem button component="li">
+                <ListItemText primary="Gallery" />
+              </ListItem>
+            </List>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
