@@ -1,28 +1,58 @@
 import React from 'react';
-
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-import banner5 from '../assets/images/banner/banner5.jpg';
-import banner4 from '../assets/images/banner/banner4.png';
-import banner3 from '../assets/images/banner/banner3.jpg';
-import banner2 from '../assets/images/banner/banner2.jpg';
-import banner1 from '../assets/images/banner/banner1.png';
+import { Typography, Button } from '@material-ui/core';
+
+import heroImage from '../assets/images/banner/banner3.jpg';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     hero: {
       display: 'flex',
       width: '100%',
-      height: '100vh',
+      height: '70vh',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundImage: `url(${banner3})`,
+      backgroundImage: `url(${heroImage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
       backgroundAttachment: 'fixed'
     },
-    heroInner: {}
+    heroInner: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: theme.spacing(1)
+    },
+    heroTitle: {
+      fontSize: '26px',
+      fontWeight: 400,
+      lineHeight: '40px',
+      fontFamily: '"Montserrat", sans-serif',
+      display: 'block',
+      textAlign: 'center',
+      '& > span': {
+        color: theme.palette.primary.main,
+        fontWeight: 700
+      }
+    },
+    strokedText: {
+      textTransform: 'uppercase',
+      color: `${theme.palette.secondary.main} !important`
+      // color: 'transparent !important',
+      // WebkitTextStroke: `2px ${theme.palette.secondary.main}`
+    },
+    heroBtnContainer: {
+      marginTop: '40px',
+      display: 'flex',
+      position: 'relative',
+      justifyContent: 'space-between',
+      margin: '0 -60px'
+    },
+    heroButton: {
+      fontFamily: '"Montserrat", sans-serif',
+      fontSize: '13px'
+    }
   })
 );
 
@@ -32,7 +62,26 @@ const Header = () => {
   return (
     <section className={classes.hero}>
       <div className={classes.heroInner}>
-        <h1>Header</h1>
+        <div className={classes.heroTitle}>
+          <span className={classes.strokedText}>Pickup</span> & <br />
+          <span>DELIVERY</span> SERVICE
+        </div>
+        <div className={classes.heroBtnContainer}>
+          <Button
+            className={classes.heroButton}
+            variant="contained"
+            color="primary"
+          >
+            Repair Services
+          </Button>
+          <Button
+            className={classes.heroButton}
+            variant="contained"
+            color="secondary"
+          >
+            Find a Location
+          </Button>
+        </div>
       </div>
     </section>
   );
