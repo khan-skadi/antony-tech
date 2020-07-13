@@ -6,15 +6,18 @@ import theme from './util/theme';
 
 import Navbar from './views/Navbar';
 import LandingPage from './views/LandingPage';
+import Footer from './views/Footer';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
+      <div style={{ flex: '1 0 auto' }}>
         <Navbar />
         <LandingPage />
-        <h1>Ruskiy</h1>
+        <h2>Ruskiy</h2>
+        <p>Text in landing page</p>
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );

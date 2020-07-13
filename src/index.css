@@ -4,3 +4,20 @@
   font-family: 'Barlow', sans-serif;
   font-family: 'Montserrat', sans-serif;
 } */
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+footer {
+  flex-shrink: 0;
+  background-color: #e0e0e0;
+  padding-bottom: 12px;
+}
