@@ -2,12 +2,21 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const createTheme = createMuiTheme({
   // spacing: [0, 4, 8, 16, 32, 64],
+  typography: {
+    fontFamily: ['"Barlow", sans-serif', '"Montserrat", sans-serif'].join(',')
+  },
   palette: {
     primary: {
-      main: '#26a69a' // teal
+      light: '#6573c3',
+      main: '#3f51b5', // indigo
+      dark: '#2c387e',
+      contrastText: '#fff'
     },
     secondary: {
-      main: '#e0e0e0' // light grey
+      light: '#4aedc4',
+      main: '#1de9b6', // teal
+      dark: '#14a37f',
+      contrastText: '#000'
     },
     error: {
       main: '#ff1744' // red
