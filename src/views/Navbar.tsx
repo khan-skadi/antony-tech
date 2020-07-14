@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  fade,
-  makeStyles,
-  Theme,
-  createStyles
-} from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,7 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1
     },
     appBar: {
-      backgroundColor: theme.palette.primary.main,
+      // backgroundColor: theme.palette.primary.main,
+      // backgroundColor: '#3d3d3d',
+      backgroundColor: theme.palette.primary.dark,
       zIndex: theme.zIndex.drawer + 101
     },
     navToolbar: {
@@ -34,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menuButton: {
       color: '#fff'
+      // color: '#000'
     },
 
     toolbar: theme.mixins.toolbar,
@@ -41,6 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontFamily: '"Barlow", sans-serif',
       fontSize: '20px',
       color: '#fff',
+      // color: '#000',
       marginLeft: theme.spacing(1)
     },
     title: {
@@ -50,10 +49,12 @@ const useStyles = makeStyles((theme: Theme) =>
       }
     },
     navList: {
-      backgroundColor: 'rgba(101, 115, 195, .9)',
+      // backgroundColor: 'rgba(101, 115, 195, .9)',
+      backgroundColor: theme.palette.primary.light,
       '& > li > div > span': {
         fontFamily: '"Montserrat", sans-serif',
-        fontSize: '16px',
+        textTransform: 'uppercase',
+        fontSize: '12px',
         lineHeight: '30px',
         background: 'transparent',
         textAlign: 'left',
@@ -66,6 +67,10 @@ const useStyles = makeStyles((theme: Theme) =>
       whiteSpace: 'nowrap',
       '& li:hover': {
         backgroundColor: 'rgba(101, 115, 195, .9)'
+      },
+      '& > li > div > span': {
+        textTransform: 'uppercase',
+        fontSize: '13px'
       }
     },
     list: {
