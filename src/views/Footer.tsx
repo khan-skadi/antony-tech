@@ -18,7 +18,7 @@ const Footer = () => {
   const classes = useStyles();
 
   return (
-    <footer style={{}}>
+    <footer>
       <Grid container>
         <Grid item xs={12}>
           <h1 style={{ textAlign: 'center' }}>Footer</h1>
