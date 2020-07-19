@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 
 import laptopImg from '../assets/images/laptop/1.jpg';
 
@@ -27,29 +27,49 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const list = (
+  <>
+    <Grid item xs={4}>
+      <a href="#!">
+        <img src={laptopImg} alt="laptop" width="150px" />
+      </a>
+      <Typography variant="body1">laptop repair</Typography>
+    </Grid>
+    <Grid item xs={4}>
+      <a href="#!">
+        <img src={laptopImg} alt="laptop" width="150px" />
+      </a>
+      <Typography variant="body1">laptop repair</Typography>
+    </Grid>
+    <Grid item xs={4}>
+      <a href="#!">
+        <img src={laptopImg} alt="laptop" width="150px" />
+      </a>
+      <Typography variant="body1">laptop repair</Typography>
+    </Grid>
+  </>
+);
+
 const RepairServices = () => {
   const classes = useStyles();
+  const list = [0, 1, 2];
 
   const sectionDesktop = (
-    <Grid container spacing={1}>
-      <Grid item xs={4}>
-        <a href="#!" target="_blank" rel="noopener noreferrer">
-          <img src={laptopImg} alt="laptop" width="150px" />
-        </a>
-        <Typography variant="body1">laptop repair</Typography>
-      </Grid>
-      <Grid item xs={4}>
-        <a href="#!" target="_blank" rel="noopener noreferrer">
-          <img src={laptopImg} alt="laptop" width="150px" />
-        </a>
-        <Typography variant="body1">laptop repair</Typography>
-      </Grid>
-      <Grid item xs={4}>
-        <a href="#!" target="_blank" rel="noopener noreferrer">
-          <img src={laptopImg} alt="laptop" width="150px" />
-        </a>
-        <Typography variant="body1">laptop repair</Typography>
-      </Grid>
+    <Grid container>
+      {list.map((key) => (
+        <Grid item key={key} xs={12} style={{ marginBottom: '50px' }}>
+          <Grid container justify="space-around">
+            {list.map((value) => (
+              <Grid key={value} item>
+                <a href="#!">
+                  <img src={laptopImg} alt="laptop" width="150px" />
+                </a>
+                <Typography variant="body1">laptop repair</Typography>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      ))}
     </Grid>
   );
 
