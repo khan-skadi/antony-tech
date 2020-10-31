@@ -1,7 +1,6 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const createTheme = createMuiTheme({
-  // spacing: [0, 4, 8, 16, 32, 64],
   typography: {
     fontFamily: ['"Barlow", sans-serif', '"Montserrat", sans-serif'].join(',')
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box, Container } from '@material-ui/core';
 
 import laptopImg from '../assets/images/laptop/1.jpg';
 
@@ -9,6 +9,14 @@ const useStyles = makeStyles((theme: Theme) =>
     sectionRepairServices: {
       flexGrow: 1,
       textAlign: 'center'
+    },
+    sectionTitle: {
+      margin: '50px 0',
+      fontSize: '24px',
+      fontFamily: '"Montserrat", sans-serif',
+      lineHeight: '40px',
+      textTransform: 'uppercase',
+      fontWeight: 600
     },
     sectionDesktop: {
       display: 'none',
@@ -55,27 +63,31 @@ const RepairServices = () => {
   const list = [0, 1, 2];
 
   const sectionDesktop = (
-    <Grid container>
-      {list.map((key) => (
-        <Grid item key={key} xs={12} style={{ marginBottom: '50px' }}>
-          <Grid container justify="space-around">
-            {list.map((value) => (
-              <Grid key={value} item>
-                <a href="#!">
-                  <img src={laptopImg} alt="laptop" width="150px" />
-                </a>
-                <Typography variant="body1">laptop repair</Typography>
-              </Grid>
-            ))}
+    <Container maxWidth="lg">
+      <Grid container>
+        {list.map((key) => (
+          <Grid item key={key} xs={12} style={{ marginBottom: '50px' }}>
+            <Grid container justify="space-around">
+              {list.map((value) => (
+                <Grid key={value} item>
+                  <a href="#!">
+                    <img src={laptopImg} alt="laptop" width="150px" />
+                  </a>
+                  <Typography variant="body1">laptop repair</Typography>
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
-        </Grid>
-      ))}
-    </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 
   return (
     <section className={classes.sectionRepairServices}>
-      <h1>Repair Services</h1>
+      <Typography variant="h1" className={classes.sectionTitle}>
+        Repair Services
+      </Typography>
       <div className={classes.sectionDesktop}>{sectionDesktop}</div>
     </section>
   );
