@@ -1,8 +1,8 @@
 export const repairServices = {
-  Laptop: 'LaptopRepair',
-  Desktop: 'DesktopRepair',
-  iPhone: 'iPhoneRepair',
-  iPad: 'iPadRepair',
-  Mac: 'MacRepair',
-  Smartphone: 'SmartphoneRepair'
+  Laptop: 'Laptop Repair',
+  Desktop: 'Desktop Repair',
+  Mac: 'Mac Repair',
+  iPad: 'iPad Repair',
+  iPhone: 'iPhone Repair',
+  Smartphone: 'Smartphone Repair'
 };
