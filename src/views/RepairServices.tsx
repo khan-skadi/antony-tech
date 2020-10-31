@@ -1,8 +1,15 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Grid, Typography, Box, Container } from '@material-ui/core';
+import { Grid, Typography, Container } from '@material-ui/core';
 
 import laptopImg from '../assets/images/laptop/1.jpg';
+
+// repair images
+import repImg1 from '../assets/images/repair/iphone.png';
+import repImg2 from '../assets/images/repair/laptop.png';
+import repImg3 from '../assets/images/repair/macbook.png';
+import repImg4 from '../assets/images/repair/smartphone.png';
+import repImg5 from '../assets/images/repair/tv.png';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,6 +68,19 @@ const list = (
 const RepairServices = () => {
   const classes = useStyles();
   const list = [0, 1, 2];
+  const repImg = [repImg1, repImg2, repImg3, repImg4, repImg5];
+
+  const sectionRepair = (
+    <Container maxWidth="lg">
+      <Grid container>
+        {repImg.map((item) => (
+          <div>
+            <img src={item} alt="repair service" width="100px" height="100px" />
+          </div>
+        ))}
+      </Grid>
+    </Container>
+  );
 
   const sectionDesktop = (
     <Container maxWidth="lg">
@@ -88,6 +108,7 @@ const RepairServices = () => {
       <Typography variant="h1" className={classes.sectionTitle}>
         Repair Services
       </Typography>
+      <div>{sectionRepair}</div>
       <div className={classes.sectionDesktop}>{sectionDesktop}</div>
     </section>
   );
