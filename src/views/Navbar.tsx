@@ -21,8 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1
     },
     appBar: {
-      // backgroundColor: theme.palette.primary.main,
-      // backgroundColor: '#3d3d3d',
       backgroundColor: theme.palette.primary.dark,
       zIndex: theme.zIndex.drawer + 101
     },
@@ -31,7 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menuButton: {
       color: '#fff'
-      // color: '#000'
     },
 
     toolbar: theme.mixins.toolbar,
@@ -39,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) =>
       fontFamily: '"Barlow", sans-serif',
       fontSize: '20px',
       color: '#fff',
-      // color: '#000',
       marginLeft: theme.spacing(1)
     },
     title: {
@@ -49,7 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
       }
     },
     navList: {
-      // backgroundColor: 'rgba(101, 115, 195, .9)',
       backgroundColor: theme.palette.primary.light,
       '& > li > div > span': {
         fontFamily: '"Montserrat", sans-serif',
@@ -98,10 +93,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
-
-interface ObjectLiteral {
-  [key: string]: any;
-}
 
 const Navbar = () => {
   const classes = useStyles();
