@@ -2,7 +2,7 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const createTheme = createMuiTheme({
   typography: {
-    fontFamily: ['"Barlow", sans-serif', '"Montserrat", sans-serif'].join(',')
+    fontFamily: '"Source Sans Pro", sans-serif'
   },
   palette: {
     primary: {

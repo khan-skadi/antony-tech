@@ -1,19 +1,13 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Grid, Typography, Container } from '@material-ui/core';
-import { repairServices } from '../util/constants';
-
-// images
-import laptopImg from '../assets/images/laptop/1.jpg';
-import repImg1 from '../assets/images/repair/iphone.png';
-import repImg2 from '../assets/images/repair/laptop.png';
-import repImg3 from '../assets/images/repair/macbook1.png';
-import repImg4 from '../assets/images/repair/smartphone.png';
-import repImg5 from '../assets/images/repair/desktop.png';
-import repImg6 from '../assets/images/repair/ipad.png';
+import getRepairCategories from '../util/getRepairCategories';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      flexGrow: 1
+    },
     sectionRepairServices: {
       flexGrow: 1,
       textAlign: 'center'
@@ -41,51 +35,37 @@ const useStyles = makeStyles((theme: Theme) =>
     serviceImage: {
       maxWidth: '200px',
       maxHeight: '140px'
+    },
+    serviceText: {
+      fontSize: '20px',
+      fontWeight: 600
     }
   })
 );
 
-const list = (
-  <>
-    <Grid item xs={4}>
-      <a href="#!">
-        <img src={laptopImg} alt="laptop" width="150px" />
-      </a>
-      <Typography variant="body1">laptop repair</Typography>
-    </Grid>
-    <Grid item xs={4}>
-      <a href="#!">
-        <img src={laptopImg} alt="laptop" width="150px" />
-      </a>
-      <Typography variant="body1">laptop repair</Typography>
-    </Grid>
-    <Grid item xs={4}>
-      <a href="#!">
-        <img src={laptopImg} alt="laptop" width="150px" />
-      </a>
-      <Typography variant="body1">laptop repair</Typography>
-    </Grid>
-  </>
-);
-
 const RepairServices = () => {
   const classes = useStyles();
-  const repImg = [repImg1, repImg2, repImg3, repImg4, repImg5, repImg6];
+  const repairCategories = getRepairCategories();
 
   const sectionDesktop = (
-    <Container maxWidth="lg">
-      <Grid container>
-        {repImg.map((item) => (
-          <div>
-            <img
-              className={classes.serviceImage}
-              src={item}
-              alt="repair service"
-            />
-          </div>
-        ))}
-      </Grid>
-    </Container>
+    <div className={classes.root}>
+      <Container maxWidth="lg">
+        <Grid container spacing={3}>
+          {repairCategories.map((item, index) => (
+            <Grid item xs={4} key={index}>
+              <img
+                className={classes.serviceImage}
+                src={item.image}
+                alt="repair service"
+              />
+              <Typography className={classes.serviceText} variant="body1">
+                {item.text}
+              </Typography>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </div>
   );
 
   return (
